@@ -100,9 +100,16 @@ section {
 
 /* Responsive Design */
 @media (max-width: 500px) {
+    html{
+        font-size: 7px;
+    }
     .game--container {
         width: 80vw;
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .game img{
+        width: 40px;
     }
     
     .cell {
