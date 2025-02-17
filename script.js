@@ -4,15 +4,93 @@ let gameActive = true;
 let currentPlayer = "X";
 let gameState = ["", "", "", "", "", "", "", "", ""];
 
-const xImage = "./x.png";  // Ensure this path is correct
-const oImage = "./o.png";  // Make sure you add o.png in the same folder
+let xImage = "./x.png";  // Ensure this path is correct
+let oImage = "./o.png";// Make sure you add o.png in the same folder
+
+let xname ="";
+let oname ="nigo";
 
 
-const winningMessage = () => 
-    currentPlayer === "X" ? "😟 Weld l9ehba wins! 😔" : "😍 Weld Nass Wins! Well Played! 🥰";
+let playerchoice = 1;
+
+function useCharacter(char){
+    if(playerchoice== 1){
+       xImage = char.getAttribute("data-src");
+       xname = char.getAttribute("data-name");
+       playerchoice = 2
+    }else{
+       oname = char.getAttribute("data-name");
+       oImage = char.getAttribute("data-src");
+    }
+
+    statusDisplay.innerHTML = currentPlayerTurn();
+}
+
+
+const winningMessage = () => {
+    if(currentPlayer === "X"){
+        switch(xname){
+            case "safo3an":
+                return "😟 Weld l9ehba wins! 😔";
+            case "nigo":
+                return "😍 Nigo Wins! Well Played! 🥰";
+            case "amr":
+                return "😍 Ja3bo9 Wins! Well Played! 🥰";
+            case "mouad":
+                return "ap1 lwl Wins! 👍";
+            default:
+                return "ap2 tani Wins! 👍";
+        }
+    }else{
+        switch(oname){
+            case "safo3an":
+                return "😟 Weld l9ehba wins! 😔";
+            case "nigo":
+                return "😍 Nigo Wins! Well Played! 🥰";
+            case "amr":
+                return "😍 Ja3bo9 Wins! Well Played! 🥰";
+            case "mouad":
+                return "ap1 lwl Wins! 👍";
+            default:
+                return "ap2 tani Wins! 👍";
+        }
+    }
+}
+    // currentPlayer === "X" ? "😟 Weld l9ehba wins! 😔" : "😍 Weld Nass Wins! Well Played! 🥰";
 const drawMessage = () => `Game ended in a draw!`;
-const currentPlayerTurn = () => 
-    currentPlayer === "X"? "It's P1 Turn" : "It's P2 Turn";
+const currentPlayerTurn = () => {
+    if(currentPlayer === "X"){
+        switch(xname){
+            case "safo3an":
+                return "It's Safo3an Turn😑";
+            case "nigo":
+                return "It's Nigo Turn 😉";
+            case "amr":
+                return "It's Ja3bo9 Turn 😜";
+            case "mouad":
+                return "It's ap1 lwl Turn 🤨";
+            case "lakhdar":
+                return "It's ap1 tani Turn👍";
+            default:
+                xname= "safo3an";
+                return "Choose two characters!";
+        }
+    }else{
+        switch(oname){
+            case "safo3an":
+                return "It's Safo3an Turn😑";
+            case "nigo":
+                return "It's Nigo Turn 😉";
+            case "amr":
+                return "It's Ja3bo9 Turn 😜";
+            case "mouad":
+                return "It's ap1 lwl Turn 🤨";
+            default:
+                return "It's ap1 tani Turn👍";
+        }
+    }
+}
+    // currentPlayer === "X"? "It's P1 Turn" : "It's P2 Turn";
 
 statusDisplay.innerHTML = currentPlayerTurn();
 
@@ -93,7 +171,12 @@ function handlePlayerChange() {
 function handleRestartGame() {
     gameActive = true;
     currentPlayer = "X";
+    xImage= "./x.png";
+    oImage= "./o.png";
+    xname="";
+    oname="nigo";
     gameState = ["", "", "", "", "", "", "", "", ""];
     statusDisplay.innerHTML = currentPlayerTurn();
+    playerchoice= 1;
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
