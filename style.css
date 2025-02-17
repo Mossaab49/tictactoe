@@ -28,6 +28,25 @@ section {
     margin-bottom: 10px;
 }
 
+.game{
+    display: flex;    
+    align-items: center;
+}
+.game--characters{
+    display: grid;
+    padding-left: 4rem;
+    gap: 0.4rem;
+}
+
+.game img{
+    width: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.game img:hover{
+    transform: scale(1.1);
+}
+
 /* Game Board */
 .game--container {
     display: grid;
