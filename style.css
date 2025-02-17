@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+/* General Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full screen height */
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Game Container */
+section {
+    text-align: center;
+    background: white;
+    padding: 8vw;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+.game--title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Game Board */
+.game--container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 300px;
+    margin: 20px auto;
+}
+
+/* Cells */
+.cell {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Images inside cells */
+.cell img {
+    width: 80px;
+    height: 80px;
+}
+
+/* Status Message */
+.game--status {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* Restart Button */
+.game--restart {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.game--restart:hover {
+    background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .game--container {
+        width: 80vw;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .cell {
+        width: 25vw;
+        height: 25vw;
+    }
+
+    .cell img {
+        width: 70%;
+        height: 70%;
+    }
+    
+    .game--title {
+        font-size: 1.5rem;
+    }
+    
+    .game--status {
+        font-size: 1.2rem;
+    }
+    
+    .game--restart {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
