@@ -11,7 +11,23 @@ let xname ="";
 let oname ="nigo";
 
 
+
+let safo3anrbe7 = ["safo3anRbe7.mp3", "safo3anRbe72.mp3", "safo3anRbe73.mp3"];
+let nigorbe7 =["nigoRbe7.mp3"];
+let safo3ankhser = ["safo3anKhser.mp3", "safo3anKhser2.mp3", "safo3anKhser3.mp3"];
+let chkonrbe7 ;
+let chkonkhser;
+
+
+
+
+
 let playerchoice = 1;
+
+
+
+
+
 
 function useCharacter(char){
     if(playerchoice== 1){
@@ -29,10 +45,18 @@ function useCharacter(char){
 
 const winningMessage = () => {
     if(currentPlayer === "X"){
+        switch(oname){
+            case "safo3an":
+                chkonkhser= "safo3an"; break;
+            default : 
+                break;
+        }
         switch(xname){
             case "safo3an":
+                chkonrbe7= "safo3an";
                 return "😟 Weld l9ehba wins! 😔";
             case "nigo":
+                chkonrbe7="nigo";
                 return "😍 Nigo Wins! Well Played! 🥰";
             case "amr":
                 return "😍 Ja3bo9 Wins! Well Played! 🥰";
@@ -42,10 +66,18 @@ const winningMessage = () => {
                 return "ap2 tani Wins! 👍";
         }
     }else{
+        switch(xname){
+            case "safo3an":
+                chkonkhser= "safo3an"; break;
+            default : 
+                break;
+        }
         switch(oname){
             case "safo3an":
+                chkonrbe7= "safo3an";
                 return "😟 Weld l9ehba wins! 😔";
             case "nigo":
+                chkonrbe7= "nigo";
                 return "😍 Nigo Wins! Well Played! 🥰";
             case "amr":
                 return "😍 Ja3bo9 Wins! Well Played! 🥰";
@@ -55,6 +87,26 @@ const winningMessage = () => {
                 return "ap2 tani Wins! 👍";
         }
     }
+}
+
+function playAudio(){
+    if(chkonkhser == "safo3an"){
+        let audiosafo3ankhser = safo3ankhser[Math.floor(Math.random()* safo3ankhser.length)];
+        let soundsafo3ankhserL7wa = new Audio(audiosafo3ankhser);
+        soundsafo3ankhserL7wa.play();
+        return;
+    }
+    switch(chkonrbe7){
+        case "safo3an":
+            let audiosafo3anrbe7 = safo3anrbe7[Math.floor(Math.random()* safo3anrbe7.length)];
+            let soundsafo3anrbe7 = new Audio(audiosafo3anrbe7);
+            soundsafo3anrbe7.play(); break;
+        case "nigo":
+            let audionigorbe7 = nigorbe7[Math.floor(Math.random()* nigorbe7.length)];
+            let soundnigorbe7 = new Audio(audionigorbe7);
+            soundnigorbe7.play(); break;
+    }
+    
 }
     // currentPlayer === "X" ? "😟 Weld l9ehba wins! 😔" : "😍 Weld Nass Wins! Well Played! 🥰";
 const drawMessage = () => `Game ended in a draw!`;
@@ -150,6 +202,8 @@ function handleResultValidation() {
     if (roundWon) {
         statusDisplay.innerHTML = winningMessage();
         gameActive = false;
+        playAudio();
+        
         return;
     }
 
@@ -163,6 +217,9 @@ function handleResultValidation() {
     handlePlayerChange();
 }
 
+
+
+
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
@@ -173,6 +230,8 @@ function handleRestartGame() {
     currentPlayer = "X";
     xImage= "./x.png";
     oImage= "./o.png";
+    chkonkhser="";
+    chkonrbe7="";
     xname="";
     oname="nigo";
     gameState = ["", "", "", "", "", "", "", "", ""];
@@ -180,3 +239,10 @@ function handleRestartGame() {
     playerchoice= 1;
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
 }
+
+
+
+
+
+
+
